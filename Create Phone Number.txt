@@ -1,0 +1,48 @@
+function createPhoneNumber(numbers){
+  let first;
+  let second;
+  let third;
+
+for(i=0;i<numbers.length; i++){
+  let number = numbers[i]
+    let numPos = i
+
+    switch(numPos) {
+       case 0:
+        first = number.toString()
+        break;
+        case 1:
+        first += number.toString()
+        break;
+        case 2:
+        first += number.toString()
+        break;
+        case 3:
+        second = number.toString()
+        break;
+        case 4:
+        second += number.toString()
+        break;
+        case 5:
+        second += number.toString()
+        break;
+        case 6:
+        third = number.toString()
+        break;
+        case 7:
+        third += number.toString()
+        break;
+        case 8:
+        third += number.toString()
+        break;
+        case 9:
+        third += number.toString()
+        break;
+
+  }
+  }
+  
+  let phoneNumber = `(${first}) ${second}-${third}`;
+
+  return phoneNumber;
+  }

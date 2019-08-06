@@ -1,0 +1,9 @@
+function removeUrlAnchor(url){
+  if(url.includes('#') === false){
+  return url 
+  }
+  else {
+    charPos = url.indexOf('#')
+      return url.substring(0,charPos)
+  }
+}

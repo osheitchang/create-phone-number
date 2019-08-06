@@ -1,0 +1,146 @@
+// Rover Object Goes Here
+// ======================
+let rover = {
+  x:0,
+  y:0,
+  travelLog: [{x:0,y:0}],
+  direction: "N"
+}
+
+function commands (orders){
+  
+    for(i=0;i<orders.length;i++){
+      if(rover.x <= 10 && rover.x > -1 ){
+      let order = orders[i];
+      if(order !== 'l'||'r'||'f'||'b'){
+        console.log(`Please enter the correct commands (l)eft, (r)ight, (f)orward, (b)ack`);
+      }
+      switch(order) {
+        case 'l':
+          turnLeft(rover)
+          break;
+        case 'r':
+          turnRight(rover)
+          break;
+        case 'f':
+          moveForward(rover)
+          break;      
+        case 'b':
+          moveBackwards(rover);
+          break;
+      }
+    }
+    else if(rover.y <= 10 && rover.y > -1){
+    for(i=0;i<orders.length;i++){
+      let order = orders[i];
+      switch(order) {
+        case 'l':
+          turnLeft(rover)
+          break;
+        case 'r':
+          turnRight(rover)
+          break;
+        case 'f':
+          moveForward(rover)
+          break;      
+      }
+    }
+  }
+  else {
+    console.log(`You have reached the limit`);
+  }
+}
+  }
+
+
+
+// ======================
+function turnLeft(rover){
+  let currDir = rover.direction;
+  switch(currDir){
+    case "N":
+      rover.direction = "W"
+      break;
+    case "W":
+      rover.direction = "S"
+      break;
+    case "S":
+      rover.direction = "E"
+      break;
+    case "E":
+      rover.direction = "N"
+      break; 
+  }
+  console.log("turnLeft was called!");
+}
+
+function turnRight(rover){
+let currDir = rover.direction;
+  switch(currDir){
+    case "N":
+      rover.direction = "E"
+      break;
+    case "E":
+      rover.direction = "S"
+      break;
+    case "S":
+      rover.direction = "W"
+      break;
+    case "W":
+      rover.direction = "N"
+      break;   
+  }
+  console.log("turnRight was called!");
+  }
+  function moveBackwards(rover){
+    let dir = rover.direction;
+    switch(dir){
+      case "N":
+        rover.y++
+        break;
+      case "E":
+        rover.x--
+        break;
+      case "S":
+        rover.y--
+        break;
+      case "W":
+        rover.x++
+        break;
+    }
+      console.log("moveBackwards was called")
+      let currentPath = {
+        x: rover.x, y: rover.y
+      }
+      rover.travelLog.push(currentPath);
+}
+  
+  
+
+function moveForward(rover){
+  let dir = rover.direction
+    switch(dir){
+      case "N":
+        rover.y--
+        break;
+      case "E":
+        rover.x++
+        break;
+      case "S":
+        rover.y++
+        break;
+      case "W":
+        rover.x--
+        break;
+    }
+      console.log("moveForward was called")
+      let currentPath = {
+        x: rover.x, y: rover.y
+      }
+      rover.travelLog.push(currentPath);
+}
+commands("ff")
+
+for(i=0;i<rover.travelLog.length;i++){
+  console.log(`Path: x= ${rover.travelLog[i].x} <==> y= ${rover.travelLog[i].y}`);
+}
